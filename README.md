@@ -1,5 +1,7 @@
 # Portfolio Optimization and Asset Pricing in R
 
+**Advanced Corporate Finance – University of Deusto**
+
 ## About the Project
 
 This project was developed individually as part of my Advanced Corporate Finance course at the University of Deusto. The objective was to construct and evaluate an investment portfolio for a three-year horizon, considering an investor with moderate risk aversion.
