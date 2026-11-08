@@ -4,7 +4,7 @@
 
 ## About the Project
 
-This project was developed individually as part of my Advanced Corporate Finance course at the University of Deusto. The objective was to construct and evaluate an investment portfolio for a three-year horizon, considering an investor with moderate risk aversion.
+This project was developed individually as part of my Advanced Corporate Finance course at the University of Deusto. The objective was to construct and evaluate an investment portfolio for a three-year investment horizon, considering an investor with moderate risk aversion.
 
 I analyzed four European companies from different sectors: Banco Santander (SAN.MC), TotalEnergies (TTE.PA), Inditex (ITX.MC), and Unilever (ULVR.L). I selected the STOXX Europe 600 as the market benchmark and used the German 10-year government bond yield as a proxy for the risk-free rate.
 
@@ -12,7 +12,7 @@ The analysis combines Markowitz mean-variance optimization, the Capital Asset Pr
 
 ## Methodology
 
-I conducted the analysis in R using monthly financial data from September 2020 to April 2026.
+I conducted the analysis in R using monthly financial data covering the period from September 2020 to April 2026.
 
 I started with **Markowitz mean-variance optimization**, calculating historical returns, volatilities, and correlations between the four assets. I then constructed the efficient frontier under no-short-selling constraints and identified the minimum-variance and tangency portfolios. This allowed me to evaluate how diversification could improve the portfolio's risk-return relationship.
 
@@ -35,6 +35,7 @@ Based on the results and the investor's moderate risk aversion, my final recomme
 | German government bond proxy | 50.00% |
 | Banco Santander | 34.38% |
 | TotalEnergies | 15.62% |
+| **Total** | **100.00%** |
 
 I chose to allocate half of the portfolio to the government bond proxy to reduce overall risk, while concentrating the equity allocation in Santander and TotalEnergies.
 
@@ -42,11 +43,13 @@ One of the main conclusions of the project was that an optimal portfolio cannot 
 
 ## Files
 
-- `scripts/Markowitz.R`: Mean-variance optimization, efficient frontier, tangency portfolio, and Capital Market Line.
-- `scripts/CAPM.R`: Estimation of alpha and beta, hypothesis testing, and Security Market Line.
-- `scripts/APT.R`: Multifactor regressions using market, oil, and exchange-rate factors, including the Fama-French extension.
-- `report/Portfolio_Recommendation_Report.pdf`: Complete academic report in Spanish, including the economic rationale, methodology, empirical results, and final recommendation.
-- `data/README.md`: Description of the datasets required to reproduce the analysis.
+- **`Markowitz (Script).R`**: Mean-variance optimization, efficient frontier, tangency portfolio, and Capital Market Line.
+- **`CAPM (Script).R`**: Estimation of alpha and beta, hypothesis testing, and Security Market Line.
+- **`APT (Script).R`**: Multifactor regressions using market, oil, and exchange-rate factors, including the Fama-French extension.
+- **`Portfolio_Recommendation_Report.pdf`**: Complete academic report in Spanish, including the economic rationale, methodology, empirical results, and final recommendation.
+- **`RETO- 4 EMPRESAS MAS INDICE.xlsx`**: Historical prices of the four selected companies and the STOXX Europe 600.
+- **`german_bond_yield.xlsx`**: German 10-year government bond yield data.
+- **`Factores Fama French 3.xlsx`**: Fama-French three-factor data for the European market.
 
 ## Tools and Libraries
 
@@ -61,13 +64,13 @@ The main libraries used were:
 - `lubridate` for date manipulation.
 - `broom` for organizing regression results.
 
-Historical market data were obtained from Bloomberg and Yahoo Finance, while the Fama-French factors were used for the multifactor extension.
+Historical financial data were obtained from Bloomberg and Yahoo Finance, while the Fama-French factors were used for the multifactor extension.
 
 ## How to Run
 
-To reproduce the analysis, download the repository and open it in RStudio.
+To reproduce the analysis, download the repository and open the project folder in RStudio.
 
-Install the required packages:
+First, install the required R packages:
 
 ```r
 install.packages(c(
@@ -77,19 +80,19 @@ install.packages(c(
 ))
 ```
 
-The scripts require three Excel datasets containing historical stock prices, German government bond yields, and Fama-French factors. These should be placed in the repository's root directory using the filenames specified in `data/README.md`.
+Make sure the three Excel datasets are available in the same working directory as the R scripts, using the filenames listed above.
 
-Once the datasets are available, the scripts can be executed independently:
+Then, execute the scripts individually:
 
 ```r
-source("scripts/Markowitz.R")
-source("scripts/CAPM.R")
-source("scripts/APT.R")
+source("Markowitz (Script).R")
+source("CAPM (Script).R")
+source("APT (Script).R")
 ```
 
-An internet connection is required to retrieve additional financial data from Yahoo Finance.
+The scripts can be run independently. An internet connection is required to retrieve additional financial data from Yahoo Finance.
 
-The original Bloomberg datasets are not publicly included due to potential redistribution restrictions.
+Results may vary depending on data availability, market data adjustments, and package versions.
 
 ## Limitations
 
