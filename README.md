@@ -1,4 +1,4 @@
-# Portfolio Optimization and Asset Pricing in R
+# Portfolio Optimization and Asset Pricing
 
 **Advanced Corporate Finance – University of Deusto**
 
