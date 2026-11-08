@@ -4,7 +4,7 @@
 
 ## About the Project
 
-This project was developed individually as part of my Advanced Corporate Finance course at the University of Deusto. The objective was to construct and evaluate an investment portfolio for a three-year investment horizon, considering an investor with moderate risk aversion.
+This project was developed as part of my Advanced Corporate Finance course at the University of Deusto. The objective was to construct and evaluate an investment portfolio for a three-year investment horizon, considering an investor with moderate risk aversion.
 
 I analyzed four European companies from different sectors: Banco Santander (SAN.MC), TotalEnergies (TTE.PA), Inditex (ITX.MC), and Unilever (ULVR.L). I selected the STOXX Europe 600 as the market benchmark and used the German 10-year government bond yield as a proxy for the risk-free rate.
 
