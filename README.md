@@ -1,110 +1,71 @@
 # Portfolio Optimization and Asset Pricing in R
 
-### Markowitz Mean-Variance Optimization | CAPM | APT | Fama-French Three-Factor Model
+## About the Project
 
-**Author:** Aitana Salas  
-**Course:** Advanced Corporate Finance  
-**Institution:** University of Deusto  
-**Programming Language:** R
+This project was developed individually as part of my Advanced Corporate Finance course at the University of Deusto. The objective was to construct and evaluate an investment portfolio for a three-year horizon, considering an investor with moderate risk aversion.
 
-## Project Overview
+I analyzed four European companies from different sectors: Banco Santander (SAN.MC), TotalEnergies (TTE.PA), Inditex (ITX.MC), and Unilever (ULVR.L). I selected the STOXX Europe 600 as the market benchmark and used the German 10-year government bond yield as a proxy for the risk-free rate.
 
-This individual academic project develops and evaluates an investment portfolio for a three-year investment horizon, combining portfolio optimization techniques with empirical asset pricing models.
-
-The analysis examines four European equities from different sectors and evaluates their risk-return characteristics, exposure to systematic risk, and sensitivity to macroeconomic factors.
-
-The objective is to identify a suitable portfolio allocation for an investor with moderate risk aversion and assess whether different financial models lead to consistent investment recommendations.
-
-## Assets and Market Benchmark
-
-The portfolio considers four publicly traded European companies:
-
-| Company | Ticker | Sector |
-|---|---|---|
-| Banco Santander | SAN.MC | Financial Services |
-| TotalEnergies | TTE.PA | Energy |
-| Inditex | ITX.MC | Consumer Discretionary |
-| Unilever | ULVR.L | Consumer Staples |
-
-The STOXX Europe 600 is used as the market benchmark, while the German 10-year government bond yield serves as the risk-free rate proxy.
-
-The analysis uses monthly financial observations covering the period from September 2020 to April 2026.
+The analysis combines Markowitz mean-variance optimization, the Capital Asset Pricing Model (CAPM), Arbitrage Pricing Theory (APT), and the Fama-French three-factor model. My aim was not only to identify an optimal portfolio allocation, but also to understand how different approaches to risk and expected returns could influence the final investment decision.
 
 ## Methodology
 
-### 1. Markowitz Mean-Variance Optimization
+I conducted the analysis in R using monthly financial data from September 2020 to April 2026.
 
-- Estimate historical monthly log returns and the covariance matrix.
-- Construct the minimum-variance portfolio.
-- Generate the efficient frontier under no-short-selling constraints.
-- Identify the tangency portfolio by maximizing the Sharpe ratio.
-- Analyze portfolio weights, risk contributions, and the Capital Market Line.
+I started with **Markowitz mean-variance optimization**, calculating historical returns, volatilities, and correlations between the four assets. I then constructed the efficient frontier under no-short-selling constraints and identified the minimum-variance and tangency portfolios. This allowed me to evaluate how diversification could improve the portfolio's risk-return relationship.
 
-### 2. Capital Asset Pricing Model (CAPM)
+Next, I applied the **Capital Asset Pricing Model (CAPM)** to estimate each stock's alpha and beta relative to the STOXX Europe 600. I performed statistical tests to assess the significance of these coefficients and compared observed returns with those implied by the model.
 
-- Estimate asset-specific alpha and beta coefficients through linear regression.
-- Evaluate exposure to systematic market risk.
-- Perform statistical hypothesis tests on estimated coefficients.
-- Compare observed returns with CAPM-implied expected returns.
-- Visualize the Security Market Line.
+I then extended the analysis using **Arbitrage Pricing Theory (APT)**, incorporating Brent crude oil prices and EUR/USD exchange-rate movements alongside market returns. This helped me examine whether the companies were exposed to additional macroeconomic risks that could not be fully captured by the CAPM.
 
-### 3. Arbitrage Pricing Theory (APT)
+Finally, I used the **Fama-French three-factor model** to assess the influence of market, size, and value factors on stock returns and compare its explanatory power with the previous models.
 
-- Estimate multifactor regressions using market returns, Brent crude oil prices, and EUR/USD exchange-rate movements.
-- Examine the statistical significance and magnitude of factor exposures.
-- Evaluate whether additional factors improve the explanation of asset returns.
-- Apply the multifactor framework to the selected portfolio.
+## Results
 
-### 4. Fama-French Three-Factor Extension
+The analysis showed that the different models provide complementary perspectives on portfolio risk and expected returns.
 
-- Extend the analysis using European market, size (SMB), and value (HML) factors.
-- Estimate factor sensitivities and model fit for the selected equities.
-- Compare the explanatory power of the multifactor approach with the CAPM.
+Markowitz optimization helped identify the benefits of diversification and the allocation that maximized the historical Sharpe ratio under the selected constraints. The CAPM and multifactor regressions provided further insight into the systematic and macroeconomic risks affecting each company.
 
-## Portfolio Recommendation
-
-The final recommendation adopts a balanced allocation between the German government bond risk-free proxy and a diversified equity portfolio, reflecting the investor's moderate risk aversion.
+Based on the results and the investor's moderate risk aversion, my final recommendation was:
 
 | Asset | Portfolio Weight |
 |---|---:|
-| German government bond proxy | 50.000% |
-| Banco Santander | 34.383% |
-| TotalEnergies | 15.617% |
-| **Total** | **100.000%** |
+| German government bond proxy | 50.00% |
+| Banco Santander | 34.38% |
+| TotalEnergies | 15.62% |
 
-The project also discusses model assumptions, estimation uncertainty, diversification benefits, and the limitations of historical financial data when making investment decisions.
+I chose to allocate half of the portfolio to the government bond proxy to reduce overall risk, while concentrating the equity allocation in Santander and TotalEnergies.
 
-## Technologies and Tools
+One of the main conclusions of the project was that an optimal portfolio cannot be determined solely by historical returns and volatility. The results also depend on the assumptions behind each model, the selected time horizon, and the investor's risk preferences.
 
-- **R:** Statistical analysis, portfolio optimization, and financial modeling
-- **tidyverse / tidyquant:** Financial data manipulation and time-series processing
-- **quadprog:** Quadratic optimization
-- **ggplot2 / ggrepel:** Data visualization
-- **readxl / writexl:** Spreadsheet import and export
-- **lubridate:** Date processing
-- **broom:** Regression output analysis
+## Files
 
-## Repository Structure
+- `scripts/Markowitz.R`: Mean-variance optimization, efficient frontier, tangency portfolio, and Capital Market Line.
+- `scripts/CAPM.R`: Estimation of alpha and beta, hypothesis testing, and Security Market Line.
+- `scripts/APT.R`: Multifactor regressions using market, oil, and exchange-rate factors, including the Fama-French extension.
+- `report/Portfolio_Recommendation_Report.pdf`: Complete academic report in Spanish, including the economic rationale, methodology, empirical results, and final recommendation.
+- `data/README.md`: Description of the datasets required to reproduce the analysis.
 
-```text
-portfolio-optimization-asset-pricing/
-├── scripts/
-│   ├── Markowitz.R
-│   ├── CAPM.R
-│   └── APT.R
-├── data/
-│   └── README.md
-├── report/
-│   └── Portfolio_Recommendation_Report.pdf
-├── .gitignore
-└── README.md
-```
+## Tools and Libraries
+
+The project was developed in **R**, using RStudio and Posit Cloud.
+
+The main libraries used were:
+
+- `tidyverse` and `tidyquant` for financial data processing and time-series analysis.
+- `quadprog` for portfolio optimization.
+- `ggplot2`, `ggrepel`, and `scales` for data visualization.
+- `readxl` and `writexl` for working with Excel files.
+- `lubridate` for date manipulation.
+- `broom` for organizing regression results.
+
+Historical market data were obtained from Bloomberg and Yahoo Finance, while the Fama-French factors were used for the multifactor extension.
 
 ## How to Run
 
-1. Install R and RStudio.
-2. Clone or download this repository.
-3. Install the required R packages:
+To reproduce the analysis, download the repository and open it in RStudio.
+
+Install the required packages:
 
 ```r
 install.packages(c(
@@ -114,9 +75,9 @@ install.packages(c(
 ))
 ```
 
-4. Obtain the required input datasets and place them in the repository's root directory, using the exact filenames referenced in the scripts.
-5. Open RStudio and set the working directory to the repository's root directory.
-6. Execute the scripts individually:
+The scripts require three Excel datasets containing historical stock prices, German government bond yields, and Fama-French factors. These should be placed in the repository's root directory using the filenames specified in `data/README.md`.
+
+Once the datasets are available, the scripts can be executed independently:
 
 ```r
 source("scripts/Markowitz.R")
@@ -124,20 +85,14 @@ source("scripts/CAPM.R")
 source("scripts/APT.R")
 ```
 
-The scripts can be run independently. Internet access is required for market data downloaded through Yahoo Finance.
+An internet connection is required to retrieve additional financial data from Yahoo Finance.
 
-**Data availability:** Some original datasets were obtained from Bloomberg and are not included in this public repository pending redistribution permission. Users must supply appropriately licensed data with the expected structure to reproduce the analysis.
-
-## Report
-
-The full academic report, written in Spanish, is available in the `report/` directory.
-
-It provides the economic rationale, data treatment, empirical methodology, statistical results, portfolio recommendation, and discussion of model limitations.
+The original Bloomberg datasets are not publicly included due to potential redistribution restrictions.
 
 ## Limitations
 
-The analysis relies on historical returns and estimated relationships, which may not remain stable over time. Results are sensitive to the sample period, data source, benchmark selection, and underlying model assumptions.
+The analysis is based on historical financial data, and the estimated relationships may change over time. Portfolio weights and expected returns are sensitive to the observation period, market conditions, and the assumptions of each model.
 
-The German 10-year government bond yield is used as a proxy for the risk-free rate and does not represent a perfectly risk-free three-year investment.
+The German 10-year government bond yield is used as a risk-free rate proxy, although it does not perfectly match the portfolio's three-year investment horizon.
 
-This project was developed for academic purposes and does not constitute investment advice.
+This project was completed for academic purposes and does not constitute investment advice.
